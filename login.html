@@ -1,0 +1,125 @@
+<!<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday</title>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #ffecd2, #fcb69f);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+.container {
+   text-align: center;
+   background-color: white;
+   border-radius: 10px;
+   padding: 20px;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+ }
+.happybirthday-logo {
+    font-family: 'Pacifico', cursive;
+    font-size: 4em;
+    margin-top: 10px;
+}
+
+.countdown {
+  font-size: 2em;
+  margin: 20px 0;
+  color: #ff4e50;
+}
+.gift {
+    display: none;
+    margin-top: 20px;
+}
+.gift img {
+    width: 200px;
+    filter: drop-shadow(1px 1px 20px );
+    cursor: pointer;
+}
+.video-container {
+    display: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+.video-container video {
+    width: 200%;
+    max-width: 240px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+
+<div class="happybirthday-logo">Happy Birthday!</div>
+<div class="countdown" id="countdown"></div>
+<div class="gift" id="gift">
+    <img src="gift.png" alt="Gift Image" id="gift-image" onclick="openVideoPage()">
+</div>
+<div class="video-container" id="video-container">
+    <video controls>
+        <source src="birthday_video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>
+
+<script>
+// Confetti script
+function startConfetti() {
+    confetti.start();
+}
+
+// Stop confetti after some time
+function stopConfetti() {
+    setTimeout(() => {
+        confetti.stop();
+    }, 6000); // Stop after 6 seconds
+}
+
+// Set the date we're counting down to
+var countDownDate = new Date("Jun 14, 2024 00:00:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+    // Get today's date and time
+    var now = new Date().getTime();
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+
+    // Time calculations for days, hours, minutes and seconds
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="countdown"
+    document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + 
+    minutes + "m " + seconds + "s ";
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "<span style='font-family: Pacifico; color: black;'>hello!</span>";
+        document.getElementById("gift").style.display = "block";
+        startConfetti();
+        stopConfetti();
+    }
+}, 1000);
+
+function openVideoPage() {
+    document.getElementById("gift").style.display = "none";
+    document.getElementById("video-container").style.display = "block";
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.3/dist/confetti.browser.min.js"></script>
+</body>
+</html>
