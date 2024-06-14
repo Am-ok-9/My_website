@@ -1,64 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f0f8ff;
-        }
-        .login-container {
-            background-color: #ffffff;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            text-align: center;
-        }
-        input[type="text"], input[type="password"] {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login</title>
+<style>
+body {
+font-family: Arial, sans-serif;
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+background-color: #f0f8ff;
+background-image: url('balloons.gif'); /* Replace with your animated balloons image URL */
+background-size: cover;
+background-position: center;
+}
+.login-container {
+background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
+padding: 50px;
+border-radius: 20px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+text-align: center;
+position: relative;
+}
+input[type="text"], input[type="password"] {
+    width: 70%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+.toggle-password {
+    cursor: pointer;
+    color: #000;
+    margin-left: -30px;
+}
+</style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Enter your name">
+<div class="login-container">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Enter your name">
+    <div style="position: relative;">
         <input type="password" id="password" placeholder="Enter your password">
-        <button onclick="login()">Login</button>
+        <span class="toggle-password" onclick="togglePassword()">️🙉</span>
     </div>
+    <button onclick="login()">Login</button>
+</div>
 
-    <script>
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
+<script>
+function login() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
 
-            if (username === 'Amin' && password === '123456') {
-                window.location.href = 'login.html';
-            } else {
-                alert('Invalid credentials. Please try again.');
-            }
-        }
-    </script>
+    if (username === 'Amin' && password === '123456') {
+        window.location.href = 'index.html';
+    } else {
+        alert('Invalid credentials. Please try again.');
+    }
+}
+
+function togglePassword() {
+    const passwordField = document.getElementById('password');
+    const passwordToggle = document.querySelector('.toggle-password');
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        passwordToggle.textContent = '🙈';
+    } else {
+        passwordField.type = 'password';
+        passwordToggle.textContent = '️🙉';
+    }
+}
+</script>
 </body>
 </html>
