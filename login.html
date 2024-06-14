@@ -75,15 +75,13 @@ body {
 <script>
 // Confetti script
 function startConfetti() {
-    confetti.start();
+    confetti({
+        particleCount: 200,
+        spread: 70,
+        origin: { y: 0.6 }
+    });
 }
 
-// Stop confetti after some time
-function stopConfetti() {
-    setTimeout(() => {
-        confetti.stop();
-    }, 6000); // Stop after 6 seconds
-}
 
 // Set the date we're counting down to
 var countDownDate = new Date("Jun 14, 2024 00:00:00").getTime();
@@ -111,7 +109,7 @@ var x = setInterval(function() {
         document.getElementById("countdown").innerHTML = "<span style='font-family: Pacifico; color: black;'>hello!</span>";
         document.getElementById("gift").style.display = "block";
         startConfetti();
-        stopConfetti();
+        
     }
 }, 1000);
 
