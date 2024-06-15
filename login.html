@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday</title>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Yatra+One&display=swap" rel="stylesheet">
 <style>
 body, html {
     height: 100%;
@@ -30,6 +31,7 @@ body, html {
 }
 
 .countdown {
+  font-family: 'Yatra One', cursive;
   font-size: 2em;
   margin: 20px 0;
   color: #ff4e50;
@@ -41,7 +43,7 @@ body, html {
 .gift img {
     width: 200px;
     border-radius: 100px;
-    filter: drop-shadow(1px 1px 20px );
+    filter: drop-shadow(1px 1px 20px white);
     cursor: pointer;
 }
 .video-container {
@@ -85,7 +87,7 @@ function startConfetti() {
 
 
 // Set the date we're counting down to
-var countDownDate = new Date("Jun 15, 2024 00:00:00").getTime();
+var countDownDate = new Date("Jun 20, 2024 00:00:00").getTime();
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -107,7 +109,8 @@ var x = setInterval(function() {
     // If the count down is finished, write some text
     if (distance < 0) {
         clearInterval(x);
-        document.getElementById("countdown").innerHTML = "<span style='font-family: Pacifico; color: red;'>nchalh y3jbek el cadeau </span>";
+        document.getElementById("countdown").innerHTML = "<span style='font-family: Pacifico;'>nchalh y3jbek el cadeau </span>";
+        
         document.getElementById("gift").style.display = "block";
         startConfetti();
         
